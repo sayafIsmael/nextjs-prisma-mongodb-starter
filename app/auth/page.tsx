@@ -46,11 +46,12 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [variant, setVariant] = useState<Variant>("LOGIN");
 
-  useEffect(() => {
-    if (session?.status === 'authenticated') {
-      router.push('/')
-    }
-  }, [session?.status, router]);
+  //#Redirect to root route if authenticated
+  // useEffect(() => {
+  //   if (session?.status === 'authenticated') {
+  //     router.push('/')
+  //   }
+  // }, [session?.status, router]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -69,6 +70,7 @@ function Login() {
   }, [variant]);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setLoading(true)
     if (variant === 'REGISTER') {
       axios.post('/api/register', data)
       .then(() => signIn('credentials', {
@@ -81,7 +83,7 @@ function Login() {
         }
 
         if (callback?.ok) {
-          router.push('/')
+          router.back()
         }
       })
       .catch(() => toast.error('Something went wrong!'))
@@ -102,7 +104,7 @@ function Login() {
         }
 
         if (callback?.ok) {
-          router.push('/admin/dashboard')
+          router.push('/')
         }
       })
       .finally(() => setLoading(false))
@@ -157,7 +159,7 @@ function Login() {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your password" {...field} />
+                      <Input placeholder="Enter your password" {...field} type="password"/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>

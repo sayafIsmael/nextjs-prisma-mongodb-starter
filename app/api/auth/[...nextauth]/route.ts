@@ -52,6 +52,32 @@ export const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
+    async session({ session, user, token }) {
+      return session;
+    },
+    async jwt({ token, user, account, profile }) {
+      if (user) {
+        // Fetch the user's role information from the database
+        const dbUser = await prisma.user.findUnique({
+          where: { id: user.id },
+          include: { role: true }, // Assuming 'role' is the name of the relation in your Prisma model
+        });
+
+        if (dbUser) {
+          token.id = dbUser.id;
+          token.role = dbUser.role?.name; // Adjust the property based on your Prisma model
+        }
+      }
+      return token;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
