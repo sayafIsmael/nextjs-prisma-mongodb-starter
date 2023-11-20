@@ -49,9 +49,8 @@ Running commands with npm `npm run [command]`
 | command         | description                             |
 | :-------------- | :---------------------------------------|
 | `build`         | Build a production instance of the app  |
-| :-------------- | :---------------------------------------|
 | `start`         | Starts a production instance of the app |
-|-----------------------------------------------------------|
+
 
 Before build the application please set the `NODE_ENV` to `production` in .env file
 
