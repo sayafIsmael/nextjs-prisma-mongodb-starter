@@ -1,32 +1,59 @@
-## Next.js Fullstack Development Starter Kit
+## Next.js Fullstack Development Admin Panel Starter Kit
 Technologies:
 - Tailwind CSS
+- ShadcnUi
 - Cloudinary
 - NextAuth
 - Prisma
 - Mongodb
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Prerequisites
 
-## Getting Started
+**Node version 14.x**
 
-First, run the development server:
+### Cloning the repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```shell
+git clone https://github.com/sayafIsmael/nextjs-prisma-mongodb-starter.git
 ```
 
+## Getting Started
+Configure .env file:
+Add `NODE_ENV` "production" or "development"
+Add `NEXTAUTH_SECRET` with a secure string
+Add `DATABASE_URL` of your mongodb
+You can also use other database like MySql. You have to modify a little in schema.prisma file in prisma folder
+
+
+### Install packages
+
+```shell
+npm i
+npx prisma db push
+npx prisma db seed
+```
+
+### Start the app
+
+```shell
+npm run dev
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Cloudinary
 Add Cloudinary name in .env file with `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`
 Import component from `@/components/ui/image-upload` to upload image and preview
+
+Running commands with npm `npm run [command]`
+
+| command         | description                             |
+| :-------------- | :---------------------------------------|
+| `build`         | Build a production instance of the app  |
+| :-------------- | :---------------------------------------|
+| `start`         | Starts a production instance of the app |
+|-----------------------------------------------------------|
+
+Before build the application please set the `NODE_ENV` to `production` in .env file
 
 ## Learn More
 
