@@ -113,7 +113,7 @@ function Login() {
 
   return (
     <div className="h-full flex justify-center items-center bg-gray-400">
-      <div className="md:w-1/2 lg:w-1/4 ">
+      <div className="md:w-[450px]">
         <Card className="p-5 w-full">
           <CardHeader className="my-5">
             <CardTitle className="text-center">
