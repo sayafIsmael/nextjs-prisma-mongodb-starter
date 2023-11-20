@@ -7,7 +7,7 @@ import { UserNav } from "@/components/user-nav";
 const Nnavbar = async () => {
   return (
     <div className="border-b">
-      <div className="flex items-center h-16 items-center px-4">
+      <div className="flex h-16 items-center px-4">
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-6">
           <ThemeToggle />

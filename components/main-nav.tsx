@@ -17,16 +17,6 @@ export const MainNav = ({
       label: "Overview",
       active: pathname === `/`,
     },
-    {
-      href: `/billboards`,
-      label: "Billboards",
-      active: pathname === `/billboards`,
-    },
-    {
-      href: `/categories`,
-      label: "Categories",
-      active: pathname === `/categories`,
-    },
   ];
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>

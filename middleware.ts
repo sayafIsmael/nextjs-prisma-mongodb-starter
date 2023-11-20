@@ -5,7 +5,7 @@ import { userRoles } from "./prisma/enum";
 export default withAuth(
   // `withAuth` augments your `Request` with the user's token.
   function middleware(req) {
-    console.log(req.nextauth.token);
+    // console.log(req.nextauth.token);
     // return NextResponse.rewrite(new URL("/admin", req.url));
   },
   {
